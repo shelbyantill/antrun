@@ -25,54 +25,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/**
- * HOW DOES THE GAME WORK?
- * AntRun takes inspiration from Temple Run or Super Mario Run.
- * 
- * The main character is an ant, which the user is acting as. 
- * The ant has to dodge its red/purple bug enemies (there are normal enemies and boss enemies).
- * While the ant is dodging these enemies, it has to collect all the yellow/gold coins in the round. 
- * 
- * 
- * If it collects all the coins, it moves on to the next round.
- * If it dies by an enemy before it gets to collect the coins, it dies and explodes.
- * Then, the game exits and the user lost. 
- * There are 5 rounds in total, so if the ant beats all 5, it wins the game.
- * 
- * 
- * There will be 1-2 power-ups in each round. 
- * These are green an make the ant larger. They give the ant an extra 
- * life and ability to kill an enemy it collides with.
- * 
- * The number of enemies, ants, and power-ups will depend on the round.
- * But, the game will specify how many before the round starts. 
- * 
- * Use the up and down arrows to move across the ground.
- * 
- * 
- * REMEMBER (Cheat Sheet): 
- * 
- * Enemies: smaller and reddish/purple (you want to avoid)
- * 
- * Boss Enemies: bigger and reddish/purple (you want to avoid)
- * 
- * Coins: gold/yellow circles (you want to collect)
- * 
- * Power Ups: green diamonds (you want to collect. will give you extra life) 
- * 
- * Use up and down arrows to move. 
- * 
- * If you die, expect a big explosion of your body. 
-*/
-
 
 
 
 public class AntRun { 
     
-    //final cconstant variables
     
-    final public static int POWERUPS = 2; // max number of powerups for round 1
+    
+    final public static int POWERUPS = 2; 
     final public static Random RAND = new Random(); //random number
     final public static Dimension BOARD_SIZE = new Dimension(1000,600); //board size
     final public static int BIG = 20;
@@ -87,15 +47,15 @@ public class AntRun {
     final public static int DIRTNUMBER4 = 55;
     final public static Color DIRTCOLOR4 = new Color(73,40,40);
     final public static Picture ANT = new Picture("ant.png"); 
-    final public static ReusableClip clip = new ReusableClip("beep.wav");//coins
-    final public static ReusableClip clip2 = new ReusableClip("arrow.wav");// explosion
+    final public static ReusableClip clip = new ReusableClip("beep.wav");
+    final public static ReusableClip clip2 = new ReusableClip("arrow.wav");
     
     
     
-    //non final  variables for this class
    
-    public static int COINS = 4; //total number of coins to be collected - can change depending on round
-    public static int COIN_TYPES = COINS/2; //amount of each coin type present
+   
+    public static int COINS = 4; 
+    public static int COIN_TYPES = COINS/2; 
     public static boolean power = false; 
     public static boolean power2 = false; 
     public static boolean round1 = true; 
@@ -105,19 +65,13 @@ public class AntRun {
     public static boolean round5 = false; 
     public static LinkedList <Enemies>eList = new LinkedList<>();
     public static LinkedList <Coins>cList = new LinkedList<>();
-    public static LinkedList <PowerUp>pList = new LinkedList<>();  //30
+    public static LinkedList <PowerUp>pList = new LinkedList<>(); 
     
     
     public static void startRound2(SpriteComponent sc){
-        /**
-         * ROUND 2
-         * 
-         * deletes current enemy and power up sprites from the frame and adds new ones
-         * 
-         */
-        
-        Coins.coinsTotal = 0; //number of coins the ant has collected in round
-        COINS = 6; // number of coins it needs to collect
+       
+        Coins.coinsTotal = 0; 
+        COINS = 6; 
         power = false; 
         power2 = false; 
         
@@ -157,7 +111,7 @@ public class AntRun {
         
         
         for(int i=0;i<3;i++) {
-            Coins coin1 = new Coin1(sc); //60
+            Coins coin1 = new Coin1(sc); 
             cList.add(coin1);
             Coins coin2 = new Coin2(sc);
             cList.add(coin2);
@@ -171,14 +125,8 @@ public class AntRun {
     
     public static void startRound3(SpriteComponent sc){
         
-        /**
-         * ROUND 3
-         * 
-         * deletes current enemy and power up sprites from the frame and adds new ones
-         * 
-         */
-        
-        Coins.coinsTotal = 0; //number of coins the ant has collected in round
+       
+        Coins.coinsTotal = 0; 
         COINS = 4;
         power= false; 
         power2 = false; 
@@ -231,16 +179,9 @@ public class AntRun {
     public static void startRound4(SpriteComponent sc){
         
         
-        /**
-         * ROUND 4
-         * 
-         * deletes current enemy and power up sprites from the frame and adds new ones
-         * 
-         */
         
-        
-        Coins.coinsTotal = 0; //number of coins the ant has collected in round
-        COINS = 6;  //coins to collect
+        Coins.coinsTotal = 0; 
+        COINS = 6;  
         power = false; 
         power2 = false; 
         
@@ -269,7 +210,7 @@ public class AntRun {
         
         for(int i=0;i<3;i++) {
             Coins coin1 = new Coin1(sc);
-            cList.add(coin1); //120
+            cList.add(coin1); 
             Coins coin2 = new Coin2(sc);
             cList.add(coin2);
         }
@@ -278,7 +219,7 @@ public class AntRun {
             pList.add(pu);
         }
         
-        for(int i = 0; i<2;i++){ //boss enemies
+        for(int i = 0; i<2;i++){ 
             BossEnemy1 be1 = new BossEnemy1(sc);
             eList.add(be1);
             BossEnemy2 be2 = new BossEnemy2(sc);
@@ -291,24 +232,17 @@ public class AntRun {
         BossEnemy2 be2 = new BossEnemy2(sc);
         eList.add(be2);
       
-        
-        
+           
         
     }
     
     
     public static void startRound5(SpriteComponent sc){
         
-        /**
-         * ROUND 5
-         * 
-         * deletes current enemy and power up sprites from the frame and adds new ones
-         * 
-         */
+       
         
-        
-        Coins.coinsTotal = 0; //number of coins the ant has collected in round
-        COINS = 6;  //coins to collect
+        Coins.coinsTotal = 0; 
+        COINS = 6;  
         power = false; 
         power2 = false; 
         
@@ -364,11 +298,7 @@ public class AntRun {
 
     public static void main(String[]args){
         
-        /**
-         * Creates basic frame, starts first round as default, contains collision events, and key control.
-         * Runs the actual game.
-         * 
-         */
+       
         BasicFrame bf = new BasicFrame("Ant Run");
         final Container content = bf.getContentPane();
         final CardLayout cards = new CardLayout();
@@ -379,7 +309,7 @@ public class AntRun {
         content.add(bc2,"Game");
         
         
-        // makes background 
+       
         
         
         SpriteComponent sc = new SpriteComponent(){
@@ -425,7 +355,7 @@ public class AntRun {
         Dimension d = new Dimension(BOARD_SIZE);
         sc.setPreferredSize(d);
         
-        //buttons for start
+       
        String[][] splashLayout = {
             {"Title"},
             {"Button"}
@@ -437,7 +367,7 @@ public class AntRun {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cards.show(content,"Game");
-                //instructions message
+               
                 JOptionPane.showMessageDialog(sc, "Welcome to AntRun!\n\n"+
                         "You will be placed on the ground as an ant\n"
                         + "where you will have to dodge enemies\n"
@@ -453,7 +383,7 @@ public class AntRun {
                          
                 );
                 JOptionPane.showMessageDialog(sc, "You are now commencing round 1. \n"  + 
-                   "You will have 4 enemies & 2 powerups. \n"  //240
+                   "You will have 4 enemies & 2 powerups. \n"  
                 + "You have "+COINS+" coins to collect. Good luck!");
                         
                 bc2.requestFocus();
@@ -468,7 +398,7 @@ public class AntRun {
         bc2.setStringLayout(layout);
         bc2.add("Ant",sc); 
         
-        //creates ant sprite that user will use
+       
         Ant ant = new Ant(sc);
         Clock.addTask(sc.moveSprites());
         
@@ -476,7 +406,7 @@ public class AntRun {
     
        
         
-        //keys that control the ant
+       
     KeyAdapter control = new KeyAdapter(){
         public void keyPressed( KeyEvent event){
             if(event.getKeyCode() == KeyEvent.VK_DOWN){
@@ -493,7 +423,7 @@ public class AntRun {
         
       
     
-         //round 1 sprites
+         
         for(int i=0;i<COIN_TYPES;i++) {
             Coins coin1 = new Coin1(sc);
             cList.add(coin1);
@@ -519,7 +449,7 @@ public class AntRun {
         }
     
 
-    // collision event between Ant and Coins
+    
     sc.addSpriteSpriteCollisionListener(Coins.class, Ant.class, new SpriteSpriteCollisionListener<Coins, Ant>() {
             
             @Override
@@ -551,7 +481,7 @@ public class AntRun {
                             round3 = true;
                             JOptionPane.showMessageDialog(sc, "You win the second round! \n"
                                 + "You collected "+ Coins.coinsTotal +"/" +COINS+ " coins."); 
-                            ant.setPicture(ant.ant); //300
+                            ant.setPicture(ant.ant); 
                             startRound3(sc);
                         }
                         else if(round3 = true && round4 == false && round2 == false && round1 == false && round5 == false){
@@ -588,14 +518,13 @@ public class AntRun {
             
         });
     
-    
      // collision event between Ant and Enemy 1
      sc.addSpriteSpriteCollisionListener(Enemy1.class, Ant.class, new SpriteSpriteCollisionListener<Enemy1, Ant>() {
             
             @Override
             public void collision(Enemy1 sp1, Ant sp2) {
                 if(power==true){
-                    power=false; //330
+                    power=false; 
                     sp1.setActive(false);
                     sp2.setActive(true);
                     ant.setPicture(ANT);
@@ -634,7 +563,7 @@ public class AntRun {
             
         });
      
-    // collision event between Ant and Enemy 2
+   
      sc.addSpriteSpriteCollisionListener(Enemy2.class, Ant.class, new SpriteSpriteCollisionListener<Enemy2, Ant>() {
             
             @Override
@@ -642,7 +571,7 @@ public class AntRun {
                 if(power==true){
                     power=false;
                     sp1.setActive(false);
-                    sp2.setActive(true); //360
+                    sp2.setActive(true); 
                     ant.setPicture(ANT);
                 }
                 else if(power2==true){
@@ -675,7 +604,7 @@ public class AntRun {
             
         });
      
-    // collision event between Ant and Enemy 3
+    
      sc.addSpriteSpriteCollisionListener(Enemy3.class, Ant.class, new SpriteSpriteCollisionListener<Enemy3, Ant>() {
             
             @Override
@@ -715,7 +644,7 @@ public class AntRun {
 
             
         });
-    // collision event between Ant and Enemy 4
+   
     sc.addSpriteSpriteCollisionListener(Enemy4.class, Ant.class, new SpriteSpriteCollisionListener<Enemy4, Ant>() {
             
             @Override
@@ -735,7 +664,7 @@ public class AntRun {
                 }
                 else if(Coins.coinsTotal == COINS){
                     sp1.setActive(false);
-                    sp2.setActive(false); //300
+                    sp2.setActive(false); 
                     JOptionPane.showMessageDialog(sc, "You Win! Game Over! \n"
                             + "You collected "+ Coins.coinsTotal +"/" +COINS+ " coins.");
                     System.exit(0);
@@ -758,7 +687,7 @@ public class AntRun {
         });
     
     
-    // collision event between Ant and Boss Enemy 1
+   
     sc.addSpriteSpriteCollisionListener(BossEnemy1.class, Ant.class, new SpriteSpriteCollisionListener<BossEnemy1, Ant>() {
             
             @Override
@@ -774,7 +703,7 @@ public class AntRun {
                     power=true;
                     power2=false;
                     sp1.setActive(false); 
-                    sp2.setActive(true); //450
+                    sp2.setActive(true); 
                     ant.setPicture(ANT.resize(1.3));
                 }
                 else if(Coins.coinsTotal == COINS){
@@ -804,7 +733,7 @@ public class AntRun {
 
             
         });
-    // collision event between Ant and Boss Enemy 2
+   
     sc.addSpriteSpriteCollisionListener(BossEnemy2.class, Ant.class, new SpriteSpriteCollisionListener<BossEnemy2, Ant>() {
             
             @Override
@@ -822,7 +751,7 @@ public class AntRun {
                     sp2.setActive(true);
                     ant.setPicture(ANT.resize(1.3));
                 }
-                else if(Coins.coinsTotal == COINS){ //480
+                else if(Coins.coinsTotal == COINS){ 
                     sp1.setActive(false);
                     sp2.setActive(false);
                     JOptionPane.showMessageDialog(sc, "You Win! Game Over! \n"
@@ -851,7 +780,7 @@ public class AntRun {
             
         });
     
-    // collision event between Ant and Boss Enemy 3
+   
     sc.addSpriteSpriteCollisionListener(BossEnemy3.class, Ant.class, new SpriteSpriteCollisionListener<BossEnemy3, Ant>() {
             
             @Override
@@ -871,7 +800,7 @@ public class AntRun {
                 }
                 else if(Coins.coinsTotal == COINS){
                     sp1.setActive(false);
-                    sp2.setActive(false); //510
+                    sp2.setActive(false); 
                     JOptionPane.showMessageDialog(sc, "You Win! Game Over! \n"
                             + "You collected "+ Coins.coinsTotal +"/" +COINS+ " coins.");
                     System.exit(0);
@@ -897,7 +826,7 @@ public class AntRun {
             
         });
     
-    // collision event between Ant and Power Up
+ 
     sc.addSpriteSpriteCollisionListener(PowerUp.class, Ant.class, new SpriteSpriteCollisionListener<PowerUp, Ant>() {
             
             @Override
@@ -923,7 +852,7 @@ public class AntRun {
     bc2.addKeyListener(control);
         
     
-    bf.show(); //536
+    bf.show(); 
     }
     
     
