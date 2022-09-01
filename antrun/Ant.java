@@ -11,12 +11,7 @@ import basicgraphics.images.Picture;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
-/**
- * 
- * Ant Class- processes the ant hitting the walls and creates the ant sprite by setting its image and velocity.
- * 
- * 
- */
+
 public class Ant extends Sprite{
     public Picture ant;
 
